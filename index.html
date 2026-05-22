@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏍️ Mangaluru to Wayanad Bike Trip – 4 Day Itinerary</title>
+  <meta name="description" content="Interactive 4-day motorcycle trip itinerary from Mangaluru to Wayanad with route maps, pinned stops, place images, and travel details." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- ===== HEADER ===== -->
+    <header id="app-header">
+      <div class="header-bg"></div>
+      <div class="header-content">
+        <div class="header-left">
+          <span class="header-icon">🏍️</span>
+          <div>
+            <h1 id="main-title">Mangaluru → Wayanad</h1>
+            <p class="header-subtitle">4-Day Bike Trip &bull; May 28 – 31 &bull; ~775 km</p>
+          </div>
+        </div>
+        <div class="header-badges">
+          <span class="badge"><span class="badge-dot"></span>Two-Wheeler</span>
+          <span class="badge"><span class="badge-dot"></span>Karnataka &amp; Kerala</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== DAY NAVIGATION ===== -->
+    <nav id="day-nav" aria-label="Day selector"></nav>
+
+    <!-- ===== MAIN LAYOUT ===== -->
+    <main id="main-content">
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div id="day-summary-card"></div>
+        <div id="stops-list"></div>
+      </aside>
+
+      <!-- Map -->
+      <section id="map-wrapper">
+        <div id="map"></div>
+        <div id="map-legend"></div>
+      </section>
+    </main>
+
+    <!-- ===== PLACE MODAL ===== -->
+    <div id="place-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+        <div id="modal-image-wrapper" class="modal-image-wrapper">
+          <div class="modal-image-loader">Loading image…</div>
+          <img id="modal-image" src="" alt="" />
+        </div>
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
