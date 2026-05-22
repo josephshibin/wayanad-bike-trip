@@ -39,12 +39,18 @@
     <main id="main-content">
       <!-- Sidebar -->
       <aside id="sidebar">
+        <div id="drag-handle" class="drag-handle">
+          <div class="drag-pill"></div>
+        </div>
         <div id="day-summary-card"></div>
         <div id="stops-list"></div>
       </aside>
 
       <!-- Map -->
-      <section id="map-wrapper">
+      <section id="map-wrapper" class="map-collapsed">
+        <div id="map-expand-overlay">
+          <span>Tap to Expand Map 🗺️</span>
+        </div>
         <div id="map"></div>
         <div id="map-legend"></div>
       </section>

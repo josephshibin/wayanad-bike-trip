@@ -12,10 +12,46 @@ const imageCache = {};
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-  initMap();
   renderDayNav();
+  initMap();
   selectDay(0);
   setupModal();
+
+  // Mobile Map Expand/Collapse & Drag Handle
+  const mapWrapper = document.getElementById('map-wrapper');
+  const dragHandle = document.getElementById('drag-handle');
+  if (mapWrapper) {
+    mapWrapper.addEventListener('click', () => {
+      if (window.innerWidth <= 900 && mapWrapper.classList.contains('map-collapsed')) {
+        mapWrapper.classList.remove('map-collapsed');
+        setTimeout(() => { if (map) map.invalidateSize(); }, 350);
+      }
+    });
+  }
+
+  if (dragHandle && mapWrapper) {
+    let startY = 0;
+    dragHandle.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+    });
+    dragHandle.addEventListener('touchmove', (e) => { 
+      e.preventDefault(); 
+    }, { passive: false });
+    dragHandle.addEventListener('touchend', (e) => {
+      const endY = e.changedTouches[0].clientY;
+      const deltaY = endY - startY;
+      if (window.innerWidth <= 900) {
+        if (deltaY < -20) {
+          mapWrapper.classList.add('map-collapsed'); // swiped up
+        } else if (deltaY > 20) {
+          mapWrapper.classList.remove('map-collapsed'); // swiped down
+        } else {
+          mapWrapper.classList.toggle('map-collapsed'); // tapped
+        }
+        setTimeout(() => { if (map) map.invalidateSize(); }, 350);
+      }
+    });
+  }
 }
 
 // Curated high-quality fallback images from official tourism boards
