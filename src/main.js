@@ -18,28 +18,28 @@ function init() {
   setupModal();
 }
 
-// Curated high-quality Wikimedia fallbacks for each stop
+// Curated high-quality fallback images from official tourism boards
 const fallbackImages = {
-  'Mangaluru': 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Mangalore_Skyline.jpg',
-  'Gonikoppa': 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Coffee_beans_on_a_bush_in_Coorg.jpg',
-  'Tholpetty Wildlife Sanctuary': 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Tholpetty_Wildlife_Sanctuary%2C_Wayanad.jpg',
-  'Kabini Backwaters': 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Kabini_River_near_Kabini_Jungle_Lodges.jpg',
-  'Nettara Village': 'https://upload.wikimedia.org/wikipedia/commons/0/05/Paddy_field_Wayanad.jpg',
-  'Thirunelli Temple': 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Thirunelli_temple.JPG',
-  'Thirunelli Temple (Start)': 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Thirunelli_temple.JPG',
-  'Kuruva Dweep': 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Kuruva_islands_wayanad.jpg',
-  'Chekadi Forest Village': 'https://upload.wikimedia.org/wikipedia/commons/0/05/Paddy_field_Wayanad.jpg',
-  'Pulpally Interlock Road': 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Rubber_plantation_in_Wayanad.jpg',
-  'Pulpally (Start)': 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Rubber_plantation_in_Wayanad.jpg',
-  'Vadakkanad': 'https://upload.wikimedia.org/wikipedia/commons/1/14/Elephant_near_Wayanad_Wildlife_Sanctuary.jpg',
-  'Muthanga Wildlife Sanctuary': 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Muthanga_Wildlife_Sanctuary.JPG',
-  'Edakkal Caves': 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Edakkal_Caves_1.JPG',
-  'Banasura Sagar Dam': 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Scenic_Banasura_Sagar_Dam.jpg',
-  'Banasura Sagar Dam (Start)': 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Scenic_Banasura_Sagar_Dam.jpg',
-  'En Ooru Tribal Village': 'https://upload.wikimedia.org/wikipedia/commons/8/87/Huts_in_En_Ooru%2C_Pookode%2C_Wayanad.jpg',
-  'Palchuram View Point': 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Palchuram.jpg',
-  'Kannur': 'https://upload.wikimedia.org/wikipedia/commons/5/52/Payyambalam_Beach_Kannur.jpg',
-  'Mangaluru (Arrival)': 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Mangalore_Skyline.jpg',
+  'Mangaluru': 'https://s7ap1.scene7.com/is/image/incredibleindia/kudroli-gokarnath-temple-mangalore-karnataka-tri-hero?qlt=82&ts=1727164706134',
+  'Gonikoppa': 'https://s7ap1.scene7.com/is/image/incredibleindia/coorg-karnataka-city-hero?qlt=82',
+  'Tholpetty Wildlife Sanctuary': 'https://www.keralatourism.org/images/destination/large/tholpetty_wildlife_sanctuary_wayanad20131031115206_309_1.jpg',
+  'Kabini Backwaters': 'https://s7ap1.scene7.com/is/image/incredibleindia/kabini-river-kabini-karnataka-tri-hero?qlt=82',
+  'Nettara Village': 'https://www.keralatourism.org/images/destination/large/chembra_peak_wayanad20131031103233_130_1.jpg',
+  'Thirunelli Temple': 'https://www.keralatourism.org/images/destination/large/thirunelli_temple_wayanad20131031114524_178_1.jpg',
+  'Thirunelli Temple (Start)': 'https://www.keralatourism.org/images/destination/large/thirunelli_temple_wayanad20131031114524_178_1.jpg',
+  'Kuruva Dweep': 'https://www.keralatourism.org/images/destination/large/kuruva_island_wayanad20131031105151_225_1.jpg',
+  'Chekadi Forest Village': 'https://www.keralatourism.org/images/destination/large/wayanad20131031115456_270_1.jpg',
+  'Pulpally Interlock Road': 'https://www.keralatourism.org/images/destination/large/pookot_lake_wayanad20131031111818_283_1.jpg',
+  'Pulpally (Start)': 'https://www.keralatourism.org/images/destination/large/pookot_lake_wayanad20131031111818_283_1.jpg',
+  'Vadakkanad': 'https://www.keralatourism.org/images/destination/large/pakshipathalam_wayanad20131031111327_262_1.jpg',
+  'Muthanga Wildlife Sanctuary': 'https://www.keralatourism.org/images/destination/large/wayanad_wildlife_sanctuary_muthanga20131105170321_308_1.jpg',
+  'Edakkal Caves': 'https://www.keralatourism.org/images/destination/large/edakkal_caves_wayanad20131031103606_131_1.jpg',
+  'Banasura Sagar Dam': 'https://www.keralatourism.org/images/destination/large/banasura_sagar_dam_wayanad20131031102901_330_1.jpg',
+  'Banasura Sagar Dam (Start)': 'https://www.keralatourism.org/images/destination/large/banasura_sagar_dam_wayanad20131031102901_330_1.jpg',
+  'En Ooru Tribal Village': 'https://www.keralatourism.org/images/destination/large/vythiri_wayanad20131031115340_303_1.jpg',
+  'Palchuram View Point': 'https://www.keralatourism.org/images/destination/large/kanthappara_waterfall_wayanad20131031104845_161_1.jpg',
+  'Kannur': 'https://www.keralatourism.org/images/destination/large/payyambalam_beach_kannur20131031111652_160_1.jpg',
+  'Mangaluru (Arrival)': 'https://s7ap1.scene7.com/is/image/incredibleindia/kudroli-gokarnath-temple-mangalore-karnataka-tri-hero?qlt=82&ts=1727164706134',
 };
 
 // ── Map ────────────────────────────────────────────────────────
@@ -102,12 +102,28 @@ function selectDay(dayIndex) {
 }
 
 // ── Day Summary Card ───────────────────────────────────────────
+function getGoogleMapsRouteUrl(day) {
+  if (!day.stops || day.stops.length < 2) return '#';
+  const origin = `${day.stops[0].lat},${day.stops[0].lng}`;
+  const destination = `${day.stops[day.stops.length - 1].lat},${day.stops[day.stops.length - 1].lng}`;
+  const wps = day.stops.slice(1, -1).map(s => `${s.lat},${s.lng}`);
+  const waypoints = wps.length > 0 ? `&waypoints=${wps.join('|')}` : '';
+  return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}${waypoints}`;
+}
+
 function renderDaySummary(day) {
   document.getElementById('day-summary-card').innerHTML = `
     <div class="summary-card" style="--card-accent:${day.color}">
       <div class="summary-title">${day.emoji} Day ${day.day}: ${day.title}</div>
       <div class="summary-date">${day.date} · ${day.overnight.includes('Home') ? 'Return Day' : 'Overnight: ' + day.overnight}</div>
-      <div class="summary-route">📍 ${day.route}</div>
+      <div class="summary-route">
+        📍 ${day.route}
+        <div style="margin-top: 14px;">
+          <a href="${getGoogleMapsRouteUrl(day)}" target="_blank" rel="noopener" class="gmaps-route-btn" style="background:${day.color};">
+            🗺️ View Route in Google Maps
+          </a>
+        </div>
+      </div>
       <div class="summary-stats">
         <div class="stat-box">
           <div class="stat-value" style="color:${day.color}">${day.distance}</div>
@@ -169,6 +185,9 @@ function renderStops(day) {
 
 // ── Map Update ─────────────────────────────────────────────────
 function updateMap(day) {
+  // Ensure the map container size is recalculated (critical for mobile view changes)
+  setTimeout(() => { if (map) map.invalidateSize(); }, 50);
+
   markersLayer.clearLayers();
   if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
 
