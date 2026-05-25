@@ -17,6 +17,19 @@ function init() {
   selectDay(0);
   setupModal();
 
+  // Easter Egg
+  const twoWheelerBadge = document.getElementById('two-wheeler-badge');
+  if (twoWheelerBadge) {
+    let clickCount = 0;
+    twoWheelerBadge.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount >= 5) {
+        window.open('https://www.instagram.com/physio_glam/', '_blank', 'noopener,noreferrer');
+        clickCount = 0; // reset after triggering
+      }
+    });
+  }
+
   // Mobile Map Expand/Collapse & Drag Handle
   const mapWrapper = document.getElementById('map-wrapper');
   const dragHandle = document.getElementById('drag-handle');
